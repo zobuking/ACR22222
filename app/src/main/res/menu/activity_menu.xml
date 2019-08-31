@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:title="share"
+                android:orderInCategory="100"
+                android:id="@+id/menuShareID"/>
+            <item
+                android:orderInCategory="100"
+                android:title="Feedback"
+                android:id="@+id/feedbackID"/>
+            <item
+                android:title="About"
+                android:orderInCategory="100"
+                android:id="@+id/aboutID"/>
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,53 @@
+package com.IDP.Group1.acr;
+
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.File;
+
+public class actionBar extends AppCompatActivity {
+    actionBar(){
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi = getMenuInflater();
+        mi.inflate(R.menu.activity_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menuShareID){
+            ApplicationInfo api = getApplicationContext().getApplicationInfo();
+            String apkPath = api.sourceDir;
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("application/vnd.android.package-archive");
+            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(apkPath)));
+            startActivity(Intent.createChooser(intent, "Share app using"));
+        }
+        else if (item.getItemId() == R.id.feedbackID){
+            Intent intent = new Intent(this, feedback.class);
+            startActivity(intent);
+        }
+        else if (item.getItemId() == R.id.aboutID){
+            Intent intent = new Intent(this, about.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+}
