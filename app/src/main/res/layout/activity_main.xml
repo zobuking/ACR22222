@@ -8,15 +8,10 @@
     android:layout_gravity="center"
     tools:context=".MainActivity">
 
-    <include
-        layout="@layout/activity_toolbar"
-        android:id="@+id/toolbarID"></include>
+<!--    <include-->
+<!--        layout="@layout/activity_toolbar"-->
+<!--        android:id="@+id/toolbarID"></include>-->
 
-    <TextView
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
 
 </LinearLayout>
