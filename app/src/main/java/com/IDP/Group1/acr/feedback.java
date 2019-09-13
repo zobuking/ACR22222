@@ -1,6 +1,7 @@
 package com.IDP.Group1.acr;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +14,15 @@ public class feedback extends actionBar {
 
     private EditText name, email, feedback;
     private Button send;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbarID1);
+        setSupportActionBar(toolbar);
 
         name = (EditText) findViewById(R.id.feedbackNameID);
         email = (EditText) findViewById(R.id.feedbackEmailID);

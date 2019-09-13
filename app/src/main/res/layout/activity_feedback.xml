@@ -10,7 +10,7 @@
 
     <include
         layout="@layout/activity_toolbar"
-        android:id="@+id/toolbarID1"></include>
+        android:id="@+id/toolbarID1"/>
 
     <EditText
         android:id="@+id/feedbackNameID"

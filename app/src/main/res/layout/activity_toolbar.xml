@@ -8,6 +8,7 @@
     app:popupTheme="@style/Theme.AppCompat.Light"
     android:elevation="4dp"
     app:title="ACR"
+	android:id="@+id/toolID"
     android:paddingLeft="50dp">
 
 </androidx.appcompat.widget.Toolbar>

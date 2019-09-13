@@ -12,8 +12,8 @@ public class MainActivity extends actionBar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        toolbar = (Toolbar) findViewById(R.id.toolbarID);
-//        setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbarID);
+        setSupportActionBar(toolbar);
     }
 
 
