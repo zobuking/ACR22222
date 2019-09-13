@@ -5,17 +5,19 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	android:layout_gravity="center"
-	tools:context=".about">
+	tools:context=".User">
 
 	<include
 		layout="@layout/activity_toolbar"
-		android:id="@+id/aboutToolbarID"
+		android:id="@+id/userToolbarID"
 		/>
 
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:textSize="30sp"
-		android:text="About Me"></TextView>
+		android:layout_gravity="center"
+		android:textSize="50sp"
+		android:gravity="center"
+
+		android:text="User"/>
 </LinearLayout>

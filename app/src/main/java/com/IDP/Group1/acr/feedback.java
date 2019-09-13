@@ -14,15 +14,15 @@ public class feedback extends actionBar {
 
     private EditText name, email, feedback;
     private Button send;
-    Toolbar toolbar;
+    private Toolbar feedbackToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarID1);
-        setSupportActionBar(toolbar);
+        feedbackToolbar = (Toolbar) findViewById(R.id.feedbackToolbarID);
+        setSupportActionBar(feedbackToolbar);
 
         name = (EditText) findViewById(R.id.feedbackNameID);
         email = (EditText) findViewById(R.id.feedbackEmailID);

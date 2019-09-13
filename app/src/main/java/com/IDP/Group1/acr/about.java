@@ -5,14 +5,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class about extends AppCompatActivity {
+public class about extends actionBar {
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarID2);
+        toolbar = (Toolbar) findViewById(R.id.aboutToolbarID);
         setSupportActionBar(toolbar);
     }
 }
