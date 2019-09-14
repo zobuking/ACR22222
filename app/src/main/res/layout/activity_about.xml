@@ -17,5 +17,5 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textSize="30sp"
-		android:text="About Me"></TextView>
+		android:text="About Me"/>
 </LinearLayout>
