@@ -8,16 +8,20 @@
         <menu>
             <item
                 android:title="share"
-                android:orderInCategory="100"
+                android:icon="@drawable/share"
                 android:id="@+id/menuShareID"/>
             <item
-                android:orderInCategory="100"
                 android:title="Feedback"
+                android:icon="@drawable/feedback"
                 android:id="@+id/feedbackID"/>
             <item
                 android:title="About"
-                android:orderInCategory="100"
+                android:icon="@drawable/about"
                 android:id="@+id/aboutID"/>
+            <item
+                android:id="@+id/exit"
+                android:icon="@drawable/about"
+                android:title="Exit"/>
         </menu>
     </item>
 </menu>
