@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class MainActivity extends actionBar {
 	private FirebaseAuth mAuth;
 	EditText EmaileditText, passwordEditText;
 	Button logInButton;
+	TextView errorWarning;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class MainActivity extends actionBar {
 		EmaileditText = (EditText) findViewById(R.id.emailID);
 		passwordEditText = (EditText) findViewById(R.id.passwordID);
 		logInButton = (Button) findViewById(R.id.logInID);
+		errorWarning = (TextView) findViewById(R.id.errorWarningID);
 
 		logInButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -80,8 +83,10 @@ public class MainActivity extends actionBar {
 							Intent intent = new Intent(getApplicationContext(), user.class);
 							startActivity(intent);
 							Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
+							errorWarning.setVisibility(View.INVISIBLE);
 						} else {
 							Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+							errorWarning.setVisibility(View.VISIBLE);
 						}
 
 					}
