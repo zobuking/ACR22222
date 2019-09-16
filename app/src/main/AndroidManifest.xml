@@ -12,10 +12,7 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity
-			android:name=".User"
-			android:label="@string/title_activity_user"
-			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity android:name=".user"/>
 		<activity android:name=".feedback" />
 		<activity android:name=".about" />
 		<activity android:name=".SplashScreen">
@@ -27,5 +24,4 @@
 		</activity>
 		<activity android:name=".MainActivity" />
 	</application>
-
 </manifest>

@@ -77,7 +77,7 @@ public class MainActivity extends actionBar {
 					public void onComplete(@NonNull Task<AuthResult> task) {
 						if (task.isSuccessful()) {
 							finish();
-							Intent intent = new Intent(getApplicationContext(), User.class);
+							Intent intent = new Intent(getApplicationContext(), user.class);
 							startActivity(intent);
 							Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
 						} else {
