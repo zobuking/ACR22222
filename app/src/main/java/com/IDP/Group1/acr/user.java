@@ -1,6 +1,7 @@
 package com.IDP.Group1.acr;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,16 +15,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class user extends AppCompatActivity {
+public class user extends actionBar {
 
 	FirebaseDatabase database;
 	DatabaseReference myRef;
 	Switch aSwitch;
+	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user);
+
+		toolbar = (Toolbar) findViewById(R.id.toolbarID);
+		setSupportActionBar(toolbar);
 
 		aSwitch = (Switch) findViewById(R.id.switchID);
 

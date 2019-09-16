@@ -18,6 +18,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 
@@ -26,7 +28,7 @@ public class actionBar extends AppCompatActivity {
     AppBarConfiguration mAppBarConfiguration;
 
     actionBar(){
-
+        
     }
 
     @Override
@@ -57,8 +59,27 @@ public class actionBar extends AppCompatActivity {
             Intent intent = new Intent(this, about.class);
             startActivity(intent);
         }
+        else if(item.getItemId() == R.id.exitID) {
+            finish();
+        }
+        else if (item.getItemId() == R.id.logOutID) {
+            logOut();
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logOut() {
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("loggedIn");
+
+        Toast.makeText(this, "loggin out", Toast.LENGTH_SHORT).show();
+        myRef.setValue("false");
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

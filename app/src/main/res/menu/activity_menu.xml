@@ -8,20 +8,20 @@
         <menu>
             <item
                 android:title="share"
-                android:icon="@drawable/share"
                 android:id="@+id/menuShareID"/>
             <item
                 android:title="Feedback"
-                android:icon="@drawable/feedback"
                 android:id="@+id/feedbackID"/>
             <item
                 android:title="About"
-                android:icon="@drawable/about"
                 android:id="@+id/aboutID"/>
             <item
-                android:id="@+id/exit"
-                android:icon="@drawable/about"
+                android:id="@+id/exitID"
                 android:title="Exit"/>
+            <item
+                android:id="@+id/logOutID"
+                android:title="Log Out"
+                />
         </menu>
     </item>
 </menu>
