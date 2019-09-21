@@ -49,7 +49,7 @@ public class SplashScreen extends AppCompatActivity {
 		Intent intent;
 
 		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-			intent = new Intent(this, user.class);
+			intent = new Intent(this, Home.class);
 			startActivity(intent);
 		}
 		else {
