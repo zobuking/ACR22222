@@ -16,6 +16,11 @@
 		android:name="com.IDP.Group1.acr.CLean"
 		android:label="@string/clean"
 		tools:layout="@layout/fragment_clean" />
+	<fragment
+		android:id="@+id/nav_Shedule"
+		android:name="com.IDP.Group1.acr.Shedule"
+		android:label="@string/shedule"
+		tools:layout="@layout/fragment_shedule"/>
 
 	<fragment
 		android:id="@+id/nav_FloorMapping"

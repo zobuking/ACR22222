@@ -13,6 +13,9 @@
 			android:icon="@drawable/clean"
 			android:title="@string/clean" />
 		<item
+			android:id="@+id/nav_Shedule"
+			android:title="@string/shedule"/>
+		<item
 			android:id="@+id/nav_FloorMapping"
 			android:icon="@drawable/floormapping"
 			android:title="@string/floor_mapping" />

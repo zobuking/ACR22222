@@ -42,7 +42,7 @@ public class Home extends actionBar {
 		// Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		mAppBarConfiguration = new AppBarConfiguration.Builder(
-				R.id.nav_Dashboard, R.id.nav_Clean,
+				R.id.nav_Dashboard, R.id.nav_Clean, R.id.nav_Shedule,
 				R.id.nav_FloorMapping, R.id.nav_Setting)
 				.setDrawerLayout(drawer)
 				.build();
@@ -61,6 +61,9 @@ public class Home extends actionBar {
 				}
 				else if (destination.getId() == R.id.nav_FloorMapping) {
 					Toast.makeText(Home.this, "FloorMapping", Toast.LENGTH_SHORT).show();
+				}
+				else if (destination.getId() == R.id.nav_Shedule) {
+					Toast.makeText(Home.this, "Shedule", Toast.LENGTH_SHORT).show();
 				}
 				else if (destination.getId() == R.id.nav_Setting) {
 					Toast.makeText(Home.this, "Setting", Toast.LENGTH_SHORT).show();
