@@ -17,7 +17,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.common.internal.Objects;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +28,7 @@ import java.io.File;
 public class actionBar extends AppCompatActivity {
 
     AppBarConfiguration mAppBarConfiguration;
+    private FirebaseAuth mAuth;
 
     actionBar(){
         
@@ -63,7 +66,12 @@ public class actionBar extends AppCompatActivity {
             finish();
         }
         else if (item.getItemId() == R.id.logOutID) {
-            logOut();
+            FirebaseAuth.getInstance().signOut();
+            finish();
+
+            Toast.makeText(actionBar.this, "ok sign out", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -71,15 +79,7 @@ public class actionBar extends AppCompatActivity {
 
     private void logOut() {
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("loggedIn");
 
-        Toast.makeText(this, "loggin out", Toast.LENGTH_SHORT).show();
-        myRef.setValue("false");
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
 }
