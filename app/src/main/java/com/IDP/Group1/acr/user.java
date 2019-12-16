@@ -1,20 +1,20 @@
 package com.IDP.Group1.acr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class user {
 
-	String name, email, machineID;
-	String[] notification, feedback;
+	String name, email, machineID, contactInfo;
+	List<String> notification;
 	boolean power, sleep;
 	int battery;
-	Conversation conversation;
 
 	user() {
 		name = email = machineID = "";
 		power = sleep = false;
 		battery = 0;
-		notification = new String[100];
-		feedback = new String[1000];
-		conversation = new Conversation();
+		notification = new ArrayList<String>();
 	}
 
 
