@@ -24,13 +24,115 @@
 			/>
 
 		<LinearLayout
+			android:weightSum="10"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_gravity="center"
-			android:gravity="center">
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="2dp"
+			>
+
+
+			<Switch
+				android:checked="true"
+				android:gravity="right"
+				android:layout_weight="4"
+				android:id="@+id/simpleSwitch"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+			<TextView
+				android:layout_gravity="center"
+				android:paddingTop="2dp"
+				android:gravity="left"
+				android:layout_weight="2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="POWER"/>
+
+			<ImageView
+
+				android:id="@+id/battery"
+				android:layout_weight="1"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:src="@drawable/battery" />
+
+			<TextView
+				android:layout_gravity="center"
+				android:paddingTop="2dp"
+				android:layout_weight="3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="BATTERY"/>
 		</LinearLayout>
 
+
+
+		<LinearLayout
+			android:layout_marginTop="20dp"
+			android:weightSum="5"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+
+
+			>
+
+			<ImageView
+				android:id="@+id/alert"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:layout_width="33dp"
+				android:layout_height="33dp"
+				android:src="@drawable/speaker"
+				android:padding="6dp"/>
+			<ImageView
+				android:id="@+id/sleep"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:layout_width="33dp"
+				android:layout_height="33dp"
+				android:src="@drawable/sleep"
+				android:padding="6dp"/>
+			<ImageView
+				android:id="@+id/alarm"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:layout_width="33dp"
+				android:layout_height="33dp"
+				android:src="@drawable/alarm"
+				android:padding="6dp"/>
+			<ImageView
+				android:id="@+id/noti"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:layout_width="33dp"
+				android:layout_height="33dp"
+				android:src="@drawable/message"
+				android:padding="6dp"/>
+			<ImageView
+				android:id="@+id/mute"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:layout_width="33dp"
+				android:layout_height="33dp"
+				android:src="@drawable/mute"
+				android:padding="6dp"/>
+
+
+
+
+
+		</LinearLayout>
+		<GridView
+			android:id="@+id/grid"
+			android:horizontalSpacing="20dp"
+			android:verticalSpacing="20dp"
+			android:layout_marginTop="7dp"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:numColumns="2"
+			/>
 	</LinearLayout>
 
 </FrameLayout>
