@@ -1,5 +1,7 @@
 package com.IDP.Group1.acr;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.ExpandableListView;
+import android.widget.TimePicker;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +40,9 @@ public class Shedule extends Fragment {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_shedule, container, false);
 
-		ExpandableListView expandableListView = view.findViewById(R.id.expandableListViewID);
+		final ExpandableListView expandableListView = view.findViewById(R.id.expandableListViewID);
 
-		List<SheduleClass> sheduleList;
+		final List<SheduleClass> sheduleList;
 		sheduleList = new ArrayList<>();
 
 		int[] a = new int[7];
@@ -51,6 +57,46 @@ public class Shedule extends Fragment {
 		adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
 		expandableListView.setAdapter(adapter);
 
+		FloatingActionButton fab = view.findViewById(R.id.fab);
+
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(final View view) {
+				DatePicker datePicker = new DatePicker(getContext());
+				final int curDay = datePicker.getDayOfMonth();
+				final int curMonth = datePicker.getMonth() + 1;
+				final int curYear = datePicker.getYear();
+
+				TimePicker timePicker = new TimePicker(getContext());
+				final int curHour = timePicker.getCurrentHour();
+				final int curMinute = timePicker.getCurrentMinute();
+
+				TimePickerDialog dialog = new TimePickerDialog(
+						getContext(),
+						new TimePickerDialog.OnTimeSetListener() {
+							@Override
+							public void onTimeSet(TimePicker timePicker, int i, int i1) {
+								boolean isAM = true;
+								if (i > 12) {
+									isAM = false;
+									i -= 12;
+								}
+								else if (i == 0) {
+									i = 12;
+								}
+
+								sheduleList.add(new SheduleClass(i, i1, curYear ,curMonth, curDay, isAM));
+								adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
+								expandableListView.setAdapter(adapter);
+							}
+						},
+						curHour,
+						curMinute,
+						false
+				);
+				dialog.show();
+			}
+		});
 		return view;
 	}
 }

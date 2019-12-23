@@ -53,21 +53,7 @@ public class Home extends actionBar {
 		navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
 			@Override
 			public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-				if (destination.getId() == R.id.nav_Dashboard) {
-					Toast.makeText(Home.this, "Dashboard", Toast.LENGTH_SHORT).show();
-				}
-				else if (destination.getId() == R.id.nav_Clean) {
-					Toast.makeText(Home.this, "Clean", Toast.LENGTH_SHORT).show();
-				}
-				else if (destination.getId() == R.id.nav_FloorMapping) {
-					Toast.makeText(Home.this, "FloorMapping", Toast.LENGTH_SHORT).show();
-				}
-				else if (destination.getId() == R.id.nav_Shedule) {
-					Toast.makeText(Home.this, "Shedule", Toast.LENGTH_SHORT).show();
-				}
-				else if (destination.getId() == R.id.nav_Setting) {
-					Toast.makeText(Home.this, "Setting", Toast.LENGTH_SHORT).show();
-				}
+
 			}
 		});
 	}

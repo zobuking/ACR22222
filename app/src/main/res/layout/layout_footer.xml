@@ -19,7 +19,13 @@
 		<FrameLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
-
+			<Button
+				android:visibility="visible"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/_23_12_2019"
+				android:id="@+id/datePickerButton"
+				android:layout_gravity="center"/>
 			<LinearLayout
 				android:id="@+id/RepeatedID"
 				android:visibility="gone"
@@ -27,6 +33,7 @@
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
 				android:weightSum="7">
+
 				<Button
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -79,4 +86,11 @@
 			</LinearLayout>
 		</FrameLayout>
 	</LinearLayout>
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+
+
+	</FrameLayout>
 </LinearLayout>
