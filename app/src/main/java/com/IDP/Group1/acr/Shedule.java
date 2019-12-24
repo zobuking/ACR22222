@@ -85,7 +85,7 @@ public class Shedule extends Fragment {
 									i = 12;
 								}
 
-								sheduleList.add(new SheduleClass(i, i1, curYear ,curMonth, curDay, isAM));
+								sheduleList.add(new SheduleClass(i, i1, curDay ,curMonth, curYear, isAM));
 								adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
 								expandableListView.setAdapter(adapter);
 							}

@@ -1,5 +1,7 @@
 package com.IDP.Group1.acr;
 
+import android.widget.DatePicker;
+
 class SheduleClass {
 	int hour, minute, date, month, year;
 	int[] day;
@@ -13,6 +15,8 @@ class SheduleClass {
 		this.day = day;
 		this.isAM = isAM;
 		this.type = true;
+
+		date = month = year = -1;
 	}
 
 	public SheduleClass(int hour, int minute, int date, int month, int year, boolean isAM) {
@@ -23,6 +27,11 @@ class SheduleClass {
 		this.year = year;
 		this.isAM = isAM;
 		this.type = false;
+
+		day = new int[7];
+		for (int i = 0; i < 7; i++) {
+			day[i] = 0;
+		}
 	}
 
 	public int getHour() {
