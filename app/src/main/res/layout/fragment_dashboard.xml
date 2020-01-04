@@ -24,7 +24,7 @@
 			/>
 
 		<LinearLayout
-			android:weightSum="10"
+			android:weightSum="20"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
@@ -33,37 +33,47 @@
 
 
 			<Switch
+				android:theme="@style/SCBSwitch"
 				android:checked="true"
-				android:gravity="right"
+				android:gravity="end|bottom"
+				android:layout_gravity="center_vertical|end"
 				android:layout_weight="4"
 				android:id="@+id/simpleSwitch"
-				android:layout_width="wrap_content"
+				android:layout_width="0dp"
 				android:layout_height="wrap_content"/>
 
 			<TextView
-				android:layout_gravity="center"
-				android:paddingTop="2dp"
+				android:layout_marginStart="10dp"
+				android:textColor="#0E97B3"
+				android:layout_gravity="center_vertical|start"
+				android:paddingTop="6dp"
 				android:gravity="left"
-				android:layout_weight="2"
-				android:layout_width="wrap_content"
+				android:textStyle="bold"
+				android:layout_weight="10"
+				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:text="POWER"/>
+				android:text="@string/power"/>
 
 			<ImageView
-
-				android:id="@+id/battery"
+				android:id="@+id/batteryID"
 				android:layout_weight="1"
-				android:layout_width="30dp"
-				android:layout_height="30dp"
-				android:src="@drawable/battery" />
+				android:layout_gravity="end|center_vertical"
+
+				android:layout_width="20dp"
+				android:layout_height="50dp"
+				android:src="@drawable/battery100" />
 
 			<TextView
-				android:layout_gravity="center"
+				android:id="@+id/batteryTextID"
+				android:textStyle="bold"
+				android:layout_marginStart="10dp"
+				android:textColor="#0E97B3"
+				android:layout_gravity="center_vertical|start"
 				android:paddingTop="2dp"
-				android:layout_weight="3"
-				android:layout_width="wrap_content"
+				android:layout_weight="5"
+				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:text="BATTERY"/>
+				android:text="@string/battery"/>
 		</LinearLayout>
 
 
@@ -79,44 +89,44 @@
 			>
 
 			<ImageView
-				android:id="@+id/alert"
+				android:id="@+id/alertID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="33dp"
-				android:layout_height="33dp"
-				android:src="@drawable/speaker"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:src="@drawable/alert_off"
 				android:padding="6dp"/>
 			<ImageView
-				android:id="@+id/sleep"
+				android:id="@+id/sleepID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="33dp"
-				android:layout_height="33dp"
-				android:src="@drawable/sleep"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:src="@drawable/sleep_off"
 				android:padding="6dp"/>
 			<ImageView
-				android:id="@+id/alarm"
+				android:id="@+id/cleanID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="33dp"
-				android:layout_height="33dp"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
 				android:src="@drawable/alarm"
 				android:padding="6dp"/>
 			<ImageView
-				android:id="@+id/noti"
+				android:id="@+id/notificationID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="33dp"
-				android:layout_height="33dp"
-				android:src="@drawable/message"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:src="@drawable/notification"
 				android:padding="6dp"/>
 			<ImageView
-				android:id="@+id/mute"
+				android:id="@+id/micID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="33dp"
-				android:layout_height="33dp"
-				android:src="@drawable/mute"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:src="@drawable/mic_off"
 				android:padding="6dp"/>
 
 

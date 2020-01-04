@@ -23,11 +23,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Home extends actionBar {
 
 	private AppBarConfiguration mAppBarConfiguration;
+	User user;
+	TextView userName, userEmail;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class Home extends actionBar {
 
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+		user = new User();
 
 		DrawerLayout drawer = findViewById(R.id.drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
@@ -49,6 +53,13 @@ public class Home extends actionBar {
 		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 		NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 		NavigationUI.setupWithNavController(navigationView, navController);
+		View view = navigationView.getHeaderView(0);
+
+		userName = view.findViewById(R.id.userNameID);
+		userEmail = view.findViewById(R.id.userEmailID);
+
+		userName.setText(user.getName());
+		userEmail.setText(user.getEmail());
 
 		navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
 			@Override

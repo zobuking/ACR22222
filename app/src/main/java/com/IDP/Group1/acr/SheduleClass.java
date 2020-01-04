@@ -5,7 +5,7 @@ import android.widget.DatePicker;
 class SheduleClass {
 	int hour, minute, date, month, year;
 	int[] day;
-	boolean type, isAM;
+	boolean type, isAM, isEnabled;
 	//0 : one time
 	//1 : weekly
 
@@ -15,7 +15,7 @@ class SheduleClass {
 		this.day = day;
 		this.isAM = isAM;
 		this.type = true;
-
+		this.isEnabled = true;
 		date = month = year = -1;
 	}
 
@@ -27,7 +27,7 @@ class SheduleClass {
 		this.year = year;
 		this.isAM = isAM;
 		this.type = false;
-
+		this.isEnabled = true;
 		day = new int[7];
 		for (int i = 0; i < 7; i++) {
 			day[i] = 0;
@@ -40,6 +40,14 @@ class SheduleClass {
 
 	public void setHour(int hour) {
 		this.hour = hour;
+	}
+
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		isEnabled = enabled;
 	}
 
 	public int getMinute() {
