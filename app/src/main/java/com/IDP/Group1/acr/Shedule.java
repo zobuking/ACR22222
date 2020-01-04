@@ -111,7 +111,7 @@ public class Shedule extends Fragment {
 		adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
 		expandableListView.setAdapter(adapter);
 
-		FloatingActionButton fab = view.findViewById(R.id.fab);
+		FloatingActionButton fab = view.findViewById(R.id.fabSheduleID);
 
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override

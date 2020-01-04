@@ -3,12 +3,27 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:orientation="vertical"
 	tools:context=".FloorMapping">
 
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
+	<Button
+		android:layout_width="match_parent"
+		android:layout_marginHorizontal="20dp"
+		android:layout_marginVertical="20dp"
+		android:layout_height="wrap_content"
+		android:text="@string/scan_room"
+		android:background="#3AC8E0"
+		android:textColor="#202124"
+		android:textStyle="bold"
+		android:textSize="20sp"
+	/>
+
+	<ImageView
+		android:layout_marginTop="100dp"
+		android:layout_marginHorizontal="20dp"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:text="@string/hello_blank_fragment" />
+		android:src="@drawable/floor_map"
+		/>
 
 </FrameLayout>

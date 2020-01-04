@@ -31,14 +31,14 @@
 			android:layout_marginTop="2dp"
 			>
 
-
 			<Switch
 				android:theme="@style/SCBSwitch"
 				android:checked="true"
+				android:backgroundTint="#0E97B3"
 				android:gravity="end|bottom"
 				android:layout_gravity="center_vertical|end"
 				android:layout_weight="4"
-				android:id="@+id/simpleSwitch"
+				android:id="@+id/switchID"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"/>
 
@@ -84,8 +84,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-
-
 			>
 
 			<ImageView
@@ -108,9 +106,9 @@
 				android:id="@+id/cleanID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:src="@drawable/alarm"
+				android:layout_width="70dp"
+				android:layout_height="70dp"
+				android:src="@drawable/clean_now"
 				android:padding="6dp"/>
 			<ImageView
 				android:id="@+id/notificationID"

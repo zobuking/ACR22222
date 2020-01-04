@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +24,13 @@ public class Dashboard extends Fragment {
 	private User user;
 
 	int[] performance ={R.drawable.stat1,R.drawable.stat2,R.drawable.stat3,R.drawable.stat4};
-	String[] val={"Battery","Dust","Clean","data"};
+	String[] val={"Battery","Dust","Clean rate","Power on time"};
 	private ArrayAdapter<String> adapter;
 	Activity act;
 	boolean isRecording;
 	ImageView alert,sleep,alarm,notification,mic,settings, battery;
 	TextView batteryText;
+	Switch aSwitch;
 
 	public Dashboard() {
 		// Required empty public constructor
@@ -43,6 +46,7 @@ public class Dashboard extends Fragment {
 
 		user = new User();
 
+		aSwitch = V.findViewById(R.id.switchID);
 		alert =V.findViewById(R.id.alertID);
 		sleep =V.findViewById(R.id.sleepID);
 		alarm =V.findViewById(R.id.cleanID);
@@ -55,7 +59,22 @@ public class Dashboard extends Fragment {
 
 		isRecording = false;
 
+		if (user.isPowerOn) {
+			aSwitch.setChecked(true);
+		}
+		else {
+			aSwitch.setChecked(false);
+		}
+
+		aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+			}
+		});
+
 		checkBatteryData();
+
 
 		battery.setOnClickListener(new View.OnClickListener() {
 			@Override
