@@ -30,6 +30,7 @@ public class Shedule extends Fragment {
 
 	private CustomExpandableListViewAdapter adapter;
 	View lastClicked;
+	int prevExpanded;
 
 	public Shedule() {
 		// Required empty public constructor
@@ -62,52 +63,46 @@ public class Shedule extends Fragment {
 		sheduleList.add(new SheduleClass(2, 20, 13 ,7, 2018, false));
 		sheduleList.add(new SheduleClass(3, 30, a, true));
 
-////		final boolean []isExpanded = new boolean[sheduleList.size()];
-////
-////		for (int i = 0; i < sheduleList.size(); i++) {
-////			isExpanded[i] = false;
-////		}
-//
-//		expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-//			@Override
-//			public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-////				isExpanded[groupPosition] = !isExpanded[groupPosition];
-////
-////				View view1 = expandableListView.getChildAt(groupPosition);
-////				if (parent.isGroupExpanded(groupPosition)){
-////					view1.setBackgroundColor(Color.parseColor("#202124"));
-////				}
-////				else {
-////					view1.setBackgroundColor(Color.parseColor("#2A2A30"));
-////				}
-////				for (int i = 0; i < sheduleList.size(); i++) {
-////					LinearLayout linearLayout = expandableListView.getChildAt(i).findViewById(R.id.headerID);
-////
-////					int defaultColor = Color.parseColor("#202124");
-////					int clickedColor = Color.parseColor("#2A2A30");
-////
-////					if (isExpanded[groupPosition]) {
-//////						isExpanded[groupPosition] = false;
-////						v.setBackgroundColor(clickedColor);
-////					}
-////					else {
-//////						isExpanded[groupPosition] = true;
-////						v.setBackgroundColor(defaultColor);
-////					}
-////				}
-//				return false;
-//			}
-//		});
-//
-//		expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//			@Override
-//			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//
-//
-//				return false;
-//			}
-//		});
+		Toast.makeText(getContext(), "i am here", Toast.LENGTH_SHORT).show();
+		prevExpanded = -1;
 
+		expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				if (prevExpanded != -1 && prevExpanded != groupPosition) {
+					expandableListView.collapseGroup(prevExpanded);
+					LinearLayout prevLayout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
+					if (prevLayout != null) {
+						prevLayout.setBackgroundColor(Color.parseColor("#202124"));
+					}
+
+					Toast.makeText(getContext(), "prev = " + prevExpanded, Toast.LENGTH_SHORT).show();
+				}
+				LinearLayout curLayout = expandableListView.getChildAt(groupPosition).findViewById(R.id.headerID);
+
+				if (curLayout != null) {
+					curLayout.setBackgroundColor(Color.parseColor("#2A2A30"));
+				}
+				else {
+					Toast.makeText(getContext(), "null = " + groupPosition, Toast.LENGTH_SHORT).show();
+				}
+
+				Toast.makeText(getContext(), "pos = " + groupPosition, Toast.LENGTH_SHORT).show();
+				prevExpanded = groupPosition;
+			}
+		});
+
+		expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+			@Override
+			public void onGroupCollapse(int groupPosition) {
+				LinearLayout layout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
+
+				if (layout != null) {
+					layout.setBackgroundColor(Color.parseColor("#202124"));
+				}
+			}
+		});
+		
 		adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
 		expandableListView.setAdapter(adapter);
 

@@ -81,10 +81,12 @@
 		</LinearLayout>
 
 		<TextView
+			android:id="@+id/summaryTextID"
 			android:textColor="#97F2F3F3"
 			android:focusable="false"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
+			android:layout_marginLeft="40dp"
 			android:layout_weight="3"
 			android:text="summary"/>
 	</LinearLayout>

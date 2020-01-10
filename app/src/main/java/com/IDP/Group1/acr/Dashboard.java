@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 
 public class Dashboard extends Fragment {
 
@@ -28,7 +31,7 @@ public class Dashboard extends Fragment {
 	private ArrayAdapter<String> adapter;
 	Activity act;
 	boolean isRecording;
-	ImageView alert,sleep,alarm,notification,mic,settings, battery;
+	ImageView alert,sleep,clean,notification,mic,settings, battery;
 	TextView batteryText;
 	Switch aSwitch;
 
@@ -49,7 +52,7 @@ public class Dashboard extends Fragment {
 		aSwitch = V.findViewById(R.id.switchID);
 		alert =V.findViewById(R.id.alertID);
 		sleep =V.findViewById(R.id.sleepID);
-		alarm =V.findViewById(R.id.cleanID);
+		clean =V.findViewById(R.id.cleanID);
 		notification =V.findViewById(R.id.notificationID);
 		mic =V.findViewById(R.id.micID);
 		GridView G=V.findViewById(R.id.grid);
@@ -85,6 +88,21 @@ public class Dashboard extends Fragment {
 					user.battery = 20;
 
 				checkBatteryData();
+			}
+		});
+
+		clean.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentManager fragmentManager = getFragmentManager();
+
+				Clean clean = new Clean();
+				fragmentManager.beginTransaction()
+						.replace(R.id.nav_host_fragment, clean).commit();
+
+				View view = getActivity().findViewById(R.id.nav_host_fragment);
+				Snackbar.make(view, "Cleaning Right Now. Please Wait", Snackbar.LENGTH_LONG)
+						.setAction("Action", null).show();
 			}
 		});
 
