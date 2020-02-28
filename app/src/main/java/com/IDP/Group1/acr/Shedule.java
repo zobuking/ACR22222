@@ -31,6 +31,7 @@ public class Shedule extends Fragment {
 	private CustomExpandableListViewAdapter adapter;
 	View lastClicked;
 	int prevExpanded;
+	private User user;
 
 	public Shedule() {
 		// Required empty public constructor
@@ -49,23 +50,12 @@ public class Shedule extends Fragment {
 
 		final ExpandableListView expandableListView = view.findViewById(R.id.expandableListViewID);
 
+		user = new User();
 //		expandableListView.setGroupIndicator(null);
 
-		final List<SheduleClass> sheduleList;
-		sheduleList = new ArrayList<>();
+		final List<SheduleClass> sheduleList = user.getShedules();
 
-		int[] a = new int[7];
-
-		a[0] = a[1] = a[2] = 1;
-		a[3] = a[4] = a[5] = a[6] = 0;
-
-		sheduleList.add(new SheduleClass(1, 10, 23 ,8, 2019, true));
-		sheduleList.add(new SheduleClass(2, 20, 13 ,7, 2018, false));
-		sheduleList.add(new SheduleClass(3, 30, a, true));
-
-		Toast.makeText(getContext(), "i am here", Toast.LENGTH_SHORT).show();
 		prevExpanded = -1;
-
 		expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 			@Override
 			public void onGroupExpand(int groupPosition) {
@@ -76,7 +66,7 @@ public class Shedule extends Fragment {
 						prevLayout.setBackgroundColor(Color.parseColor("#202124"));
 					}
 
-					Toast.makeText(getContext(), "prev = " + prevExpanded, Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getContext(), "prev = " + prevExpanded, Toast.LENGTH_SHORT).show();
 				}
 				LinearLayout curLayout = expandableListView.getChildAt(groupPosition).findViewById(R.id.headerID);
 
@@ -84,10 +74,10 @@ public class Shedule extends Fragment {
 					curLayout.setBackgroundColor(Color.parseColor("#2A2A30"));
 				}
 				else {
-					Toast.makeText(getContext(), "null = " + groupPosition, Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getContext(), "null = " + groupPosition, Toast.LENGTH_SHORT).show();
 				}
 
-				Toast.makeText(getContext(), "pos = " + groupPosition, Toast.LENGTH_SHORT).show();
+//				Toast.makeText(getContext(), "pos = " + groupPosition, Toast.LENGTH_SHORT).show();
 				prevExpanded = groupPosition;
 			}
 		});
@@ -135,8 +125,8 @@ public class Shedule extends Fragment {
 								}
 
 								sheduleList.add(new SheduleClass(i, i1, curDay ,curMonth, curYear, isAM));
-								adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
-								expandableListView.setAdapter(adapter);
+								user.setShedules(sheduleList);
+								adapter.notifyDataSetChanged();
 							}
 						},
 						curHour,

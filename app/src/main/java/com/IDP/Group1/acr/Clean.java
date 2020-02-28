@@ -8,9 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +36,19 @@ public class Clean extends Fragment {
 		View view =  inflater.inflate(R.layout.fragment_clean, container, false);
 
 		listView = view.findViewById(R.id.cleanListViewID);
+
+		List<CleanHistory> list;
+		list = new ArrayList<>();
+
+		list.add(new CleanHistory(03, 35, 23, 1, 2020, 173));
+		list.add(new CleanHistory(03, 35, 23, 1, 2020, 173));
+		list.add(new CleanHistory(03, 35, 23, 1, 2020, 173));
+
+		Toast.makeText(view.getContext(), list.size() + " ", Toast.LENGTH_SHORT).show();
+
+		CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(view.getContext(), list);
+		listView.setAdapter(customListViewAdapter);
+
 		floatingActionButton = view.findViewById(R.id.floatingActionButtonID);
 
 		floatingActionButton.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,16 @@
 package com.IDP.Group1.acr;
 
+import android.util.Log;
+import android.util.Pair;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -106,6 +117,7 @@ public class User implements java.io.Serializable {
 		notification = new ArrayList<String>();
 		shedules = new ArrayList<>();
 		dummyData();
+//		writeData();
 	}
 
 	private void dummyData() {
@@ -119,7 +131,7 @@ public class User implements java.io.Serializable {
 		notification.add("welcome to our ACR service");
 		notification.add("please scan your room");
 		notification.add("you battery is fully charged");
-		notification.add("add a shedule for cleaning you room daily");
+		notification.add("add a schedule for cleaning you room daily");
 
 		int[] a = new int[7];
 
@@ -132,17 +144,10 @@ public class User implements java.io.Serializable {
 	}
 
 	public void writeData() {
-		try {
-			FileOutputStream fileOut = new FileOutputStream("/tmp/user.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-			out.writeObject(this);
-			out.close();
-			fileOut.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		FirebaseFirestore db = FirebaseFirestore.getInstance();
+		DocumentReference dr = db.document("user/data");
+		User object = this;
+		dr.set(object);
 	}
 
 	public User readData() {
