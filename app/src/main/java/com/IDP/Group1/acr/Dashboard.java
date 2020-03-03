@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Dashboard extends Fragment {
@@ -99,6 +101,10 @@ public class Dashboard extends Fragment {
 				Clean clean = new Clean();
 				fragmentManager.beginTransaction()
 						.replace(R.id.nav_host_fragment, clean).commit();
+
+				FirebaseFirestore db = FirebaseFirestore.getInstance();
+				DocumentReference dr = db.document("user/data");
+				dr.set(user);
 
 				View view = getActivity().findViewById(R.id.nav_host_fragment);
 				Snackbar.make(view, "Cleaning Right Now. Please Wait", Snackbar.LENGTH_LONG)
