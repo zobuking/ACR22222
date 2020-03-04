@@ -46,11 +46,8 @@ public class Dashboard extends Fragment {
 							 Bundle savedInstanceState) {
 
 		act = getActivity();
-
 		View V = inflater.inflate(R.layout.fragment_dashboard, container, false);
-
 		user = new User();
-
 		aSwitch = V.findViewById(R.id.switchID);
 		alert =V.findViewById(R.id.alertID);
 		sleep =V.findViewById(R.id.sleepID);
@@ -78,7 +75,6 @@ public class Dashboard extends Fragment {
 		});
 
 		checkBatteryData();
-
 
 		battery.setOnClickListener(new View.OnClickListener() {
 			@Override
