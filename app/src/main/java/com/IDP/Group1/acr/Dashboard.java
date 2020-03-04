@@ -56,11 +56,10 @@ public class Dashboard extends Fragment {
 		sleep =V.findViewById(R.id.sleepID);
 		clean =V.findViewById(R.id.cleanID);
 		notification =V.findViewById(R.id.notificationID);
-		mic =V.findViewById(R.id.micID);
+//		mic =V.findViewById(R.id.micID);
 		GridView G=V.findViewById(R.id.grid);
 		battery = V.findViewById(R.id.batteryID);
 		batteryText = V.findViewById(R.id.batteryTextID);
-
 
 		isRecording = false;
 
@@ -151,20 +150,20 @@ public class Dashboard extends Fragment {
 			}
 		});
 
-		mic.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				isRecording = !isRecording;
-
-				if (isRecording) {
-					mic.setImageResource(R.drawable.mic_on);
-					Toast.makeText(getContext(), "tell me your command", Toast.LENGTH_SHORT).show();
-				}
-				else {
-					mic.setImageResource(R.drawable.mic_off);
-				}
-			}
-		});
+//		mic.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				isRecording = !isRecording;
+//
+//				if (isRecording) {
+//					mic.setImageResource(R.drawable.mic_on);
+//					Toast.makeText(getContext(), "tell me your command", Toast.LENGTH_SHORT).show();
+//				}
+//				else {
+//					mic.setImageResource(R.drawable.mic_off);
+//				}
+//			}
+//		});
 
 		status_cust_adapter adapter= new status_cust_adapter(act,performance,val);
 		G.setAdapter(adapter);

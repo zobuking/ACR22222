@@ -21,6 +21,10 @@
 			android:icon="@drawable/floormapping"
 			android:title="@string/floor_mapping" />
 		<item
+			android:id="@+id/nav_KidMode"
+			android:icon="@drawable/kid_mode"
+			android:title="@string/kid_mode" />
+		<item
 			android:id="@+id/nav_Setting"
 			android:icon="@drawable/setting"
 			android:title="@string/setting" />
