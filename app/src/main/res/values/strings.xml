@@ -15,7 +15,6 @@
 	<string name="dashboard">Dashboard</string>
 	<string name="clean">Clean</string>
 	<string name="floor_mapping">Floor Mapping</string>
-	<string name="kid_mode">Kid Mode</string>
 	<string name="setting">Setting</string>
 	<string name="status">Status</string>
 	<string name="shedule">Shedule</string>
@@ -42,10 +41,11 @@
 	<string name="exit">Exit</string>
 	<string name="log_out">Log Out</string>
 	<string name="scan_room">Scan  Room</string>
-	<string name="sonar_mostleft">Sonar Most left</string>
-	<string name="sonar_left">Sonar left</string>
-	<string name="sonar_mid">Sonar Mid</string>
-	<string name="sonar_right">Sonar Right</string>
-	<string name="sonar_mostright">Sonar Most Right</string>
-
+	<string name="kid_mode">Manual Control</string>
+	<string name="sonar_left">sonar left</string>
+	<string name="sonar_mid">sonar mid</string>
+	<string name="sonar_right">sonar right</string>
+	<string name="sonar_mostright">sonar most right</string>
+	<string name="sonar_mostleft">sonar most left</string>
+	<string name="analytics">Analytics</string>
 </resources>

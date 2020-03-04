@@ -23,64 +23,23 @@
 			android:textColor="#A44DC0"
 			/>
 
-		<LinearLayout
-			android:weightSum="20"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="2dp"
-			>
-
-			<Switch
-				android:theme="@style/SCBSwitch"
-				android:checked="true"
-				android:backgroundTint="#0E97B3"
-				android:gravity="end|bottom"
-				android:layout_gravity="center_vertical|end"
-				android:layout_weight="4"
-				android:id="@+id/switchID"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"/>
-
-			<TextView
-				android:layout_marginStart="10dp"
-				android:textColor="#0E97B3"
-				android:layout_gravity="center_vertical|start"
-				android:paddingTop="6dp"
-				android:gravity="left"
-				android:textStyle="bold"
-				android:layout_weight="10"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:text="@string/power"/>
-
-			<ImageView
-				android:id="@+id/batteryID"
-				android:layout_weight="1"
-				android:layout_gravity="end|center_vertical"
-
-				android:layout_width="20dp"
-				android:layout_height="50dp"
-				android:src="@drawable/battery100" />
-
-			<TextView
-				android:id="@+id/batteryTextID"
-				android:textStyle="bold"
-				android:layout_marginStart="10dp"
-				android:textColor="#0E97B3"
-				android:layout_gravity="center_vertical|start"
-				android:paddingTop="2dp"
-				android:layout_weight="5"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:text="@string/battery"/>
-		</LinearLayout>
-
+		<Switch
+			android:layout_marginTop="50dp"
+			android:layout_marginBottom="30dp"
+			android:theme="@style/SCBSwitch"
+			android:checked="true"
+			android:backgroundTint="#0E97B3"
+			android:gravity="end|bottom"
+			android:layout_gravity="center"
+			android:id="@+id/switchID"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
 
 
 		<LinearLayout
 			android:layout_marginTop="20dp"
-			android:weightSum="5"
+			android:weightSum="4"
+			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
@@ -90,7 +49,7 @@
 				android:id="@+id/alertID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="50dp"
+				android:layout_width="0dp"
 				android:layout_height="50dp"
 				android:src="@drawable/alert_off"
 				android:padding="6dp"/>
@@ -98,23 +57,16 @@
 				android:id="@+id/sleepID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="50dp"
+				android:layout_width="0dp"
 				android:layout_height="50dp"
 				android:src="@drawable/sleep_off"
 				android:padding="6dp"/>
-			<ImageView
-				android:id="@+id/cleanID"
-				android:layout_weight="1"
-				android:layout_gravity="center_horizontal"
-				android:layout_width="70dp"
-				android:layout_height="70dp"
-				android:src="@drawable/clean"
-				android:padding="6dp"/>
+
 			<ImageView
 				android:id="@+id/notificationID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="50dp"
+				android:layout_width="0dp"
 				android:layout_height="50dp"
 				android:src="@drawable/notification"
 				android:padding="6dp"/>
@@ -122,9 +74,9 @@
 				android:id="@+id/micID"
 				android:layout_weight="1"
 				android:layout_gravity="center_horizontal"
-				android:layout_width="50dp"
+				android:layout_width="0dp"
 				android:layout_height="50dp"
-				android:src="@drawable/clean"
+				android:src="@drawable/mic_off"
 				android:padding="6dp"/>
 
 
@@ -132,15 +84,14 @@
 
 
 		</LinearLayout>
-		<GridView
-			android:id="@+id/grid"
-			android:horizontalSpacing="20dp"
-			android:verticalSpacing="20dp"
-			android:layout_marginTop="7dp"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:numColumns="2"
-			/>
+		<ImageView
+			android:id="@+id/cleanID"
+			android:layout_weight="1"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="70dp"
+			android:layout_height="0dp"
+			android:src="@drawable/clean_now"
+			android:padding="6dp"/>
 	</LinearLayout>
 
 </FrameLayout>
