@@ -26,12 +26,11 @@ import java.util.List;
 
 class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 
-	Context context;
-	List<SheduleClass> shedules;
-	TextView text1, text2, summary, sum;
-	ImageView deleteButton;
-	CustomExpandableListViewAdapter adapter = this;
-	int curDay, curMonth, curYear;
+	private Context context;
+	private List<SheduleClass> shedules;
+	private CustomExpandableListViewAdapter adapter = this;
+	private TextView text1, text2;
+	private int curDay, curMonth, curYear;
 
 	public CustomExpandableListViewAdapter(Context context, List<SheduleClass> shedules) {
 		this.context = context;
@@ -40,7 +39,6 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		DatePicker datePicker = new DatePicker(context);
 		curDay = datePicker.getDayOfMonth();
 		curMonth = datePicker.getMonth();
-//		Toast.makeText(context, "curMonth = " + curMonth, Toast.LENGTH_SHORT).show();
 		curYear = datePicker.getYear();
 	}
 
@@ -73,7 +71,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public long getChildId(int i, int i1) {
-		return i;
+		return 0;
 	}
 
 	@Override
@@ -91,10 +89,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 			view = layoutInflater.inflate(R.layout.layout_header, null);
 		}
 
-		summary = view.findViewById(R.id.summaryTextID);
-//		final LinearLayout linearLayout = view.findViewById(R.id.headerID);
-//		final int defaultColor = Color.parseColor("#202124");
-//		final int clickedColor = Color.parseColor("#2A2A30");
+		TextView summary = view.findViewById(R.id.summaryTextID);
 
 		if (sh.isType()) {
 			summary.setText(getSummary(day));
@@ -103,7 +98,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 			summary.setText(getDate2(sh.getDate(), sh.getMonth(), sh.getYear()));
 		}
 
-		deleteButton = view.findViewById(R.id.deleteButtonID);
+		ImageView deleteButton = view.findViewById(R.id.deleteButtonID);
 
 		deleteButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -113,27 +108,10 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 			}
 		});
 
-//		linearLayout.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				ExpandableListView expandableListView = (ExpandableListView) viewGroup;
-//
-//				if (expandableListView.isGroupExpanded(i)) {
-//					linearLayout.setBackgroundColor(defaultColor);
-//					expandableListView.collapseGroup(i);
-//				}
-//				else {
-//					expandableListView.expandGroup(i);
-//					linearLayout.setBackgroundColor(clickedColor);
-//				}
-//			}
-//
-//		});
 		text1 = view.findViewById(R.id.headerText1ViewID);
 		text2 = view.findViewById(R.id.headerText2ViewID);
 
-		String time = sh.getHour() + ":" + sh.getMinute();
-		text1.setText(time);
+		text1.setText(formatTime(sh.getHour(), sh.getMinute()));
 
 		if (sh.isAM)
 			text2.setText("am");
@@ -144,25 +122,22 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 			@Override
 			public void onClick(View v) {
 				getTime(sh);
-				Toast.makeText(context, "prepared", Toast.LENGTH_SHORT).show();
 			}
 		});
-
-
-
 		return view;
 	}
 
 	@Override
-	public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-		final SheduleClass sh = (SheduleClass) getGroup(i);
-		final int []day = sh.getDay();
+	public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup viewGroup) {
+		Toast.makeText(context, "entering " + i, Toast.LENGTH_SHORT).show();
 
-		if (sh.date == -1) {
-			DatePicker datePicker = new DatePicker(context);
-			sh.date = datePicker.getDayOfMonth();
-			sh.month = datePicker.getMonth() + 1;
-			sh.year = datePicker.getYear();
+		final SheduleClass sh1 = (SheduleClass) getGroup(i);
+		final int []day1 = sh1.getDay();
+
+		if (sh1.date == -1) {
+			sh1.setDate(curDay);
+			sh1.setMonth(curMonth);
+			sh1.setYear(curYear);
 		}
 
 		if (view == null) {
@@ -171,7 +146,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		}
 
 		final CheckBox repeatCheckBox = view.findViewById(R.id.repeatCheckBoxID);
-		final LinearLayout linearLayout = view.findViewById(R.id.RepeatedID);
+		final LinearLayout weekLayout = view.findViewById(R.id.RepeatedID);
 		final Button button = view.findViewById(R.id.datePickerButton);
 		final Button sat = view.findViewById(R.id.buttonSatID);
 		final Button sun = view.findViewById(R.id.buttonSunID);
@@ -181,54 +156,39 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		final Button thur = view.findViewById(R.id.buttonThursID);
 		final Button fri = view.findViewById(R.id.buttonFriID);
 
-		setDay(sat, 0, i, day);
-		setDay(sun, 1, i, day);
-		setDay(mon, 2, i, day);
-		setDay(tues, 3, i, day);
-		setDay(wed, 4, i, day);
-		setDay(thur, 5, i, day);
-		setDay(fri, 6, i, day);
+		setDay(sat, 0, i);
+		setDay(sun, 1, i);
+		setDay(mon, 2, i);
+		setDay(tues, 3, i);
+		setDay(wed, 4, i);
+		setDay(thur, 5, i);
+		setDay(fri, 6, i);
 
-		if (sh.isType()) {
+		if (sh1.isType()) {
+			Toast.makeText(context, "true", Toast.LENGTH_SHORT).show();
 			repeatCheckBox.setChecked(true);
-			linearLayout.setVisibility(View.VISIBLE);
+			weekLayout.setVisibility(View.VISIBLE);
 			button.setVisibility(View.GONE);
-		}
-
-		if (repeatCheckBox.isChecked()) {
-			button.setText(getDate1(curDay, curMonth, curYear));
+//			sum.setText(getSummary(day1));
 		}
 		else {
-			button.setText(getDate1(sh.getDate(), sh.getMonth(), sh.getYear()));
+			Toast.makeText(context, "false", Toast.LENGTH_SHORT).show();
+			repeatCheckBox.setChecked(false);
+			weekLayout.setVisibility(View.GONE);
+			button.setVisibility(View.VISIBLE);
+			button.setText(getDate1(sh1.getDate(), sh1.getMonth(), sh1.getYear()));
+//			sum.setText(getDate2(sh1.getDate(), sh1.getMonth(), sh1.getYear()));
 		}
-
-		View parentView = viewGroup.getChildAt(i);
-		sum = parentView.findViewById(R.id.summaryTextID);
-
-		repeatCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		
+		repeatCheckBox.setOnCheckedChangeListener(	new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-				if (repeatCheckBox.isChecked()) {
-					linearLayout.setVisibility(View.VISIBLE);
-					button.setVisibility(View.GONE);
-					sum.setText(getSummary(day));
-					Toast.makeText(context, getSummary(day), Toast.LENGTH_SHORT).show();
-				}
-				else {
-					linearLayout.setVisibility(View.GONE);
-					button.setVisibility(View.VISIBLE);
-
-					if (sh.getDate() == -1 || sh.getMonth() == -1 || sh.getYear() == -1) {
-						sum.setText(getDate2(curDay, curMonth, curYear));
-					}
-					else {
-						sum.setText(getDate2(sh.getDate(), sh.getMonth(), sh.getYear()));
-					}
-				}
+				sh1.setType(repeatCheckBox.isChecked());
+				Toast.makeText(context, ":(" + i + " " + i1, Toast.LENGTH_SHORT).show();
+				update(i, sh1, "checkbox 187");
+				Toast.makeText(context, ":(" + i + " " + i1, Toast.LENGTH_SHORT).show();
 			}
 		});
-
-
 
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -237,9 +197,13 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 						context,
 						new DatePickerDialog.OnDateSetListener() {
 							@Override
-							public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-								button.setText(getDate1(i2, i1+1, i));
-								sum.setText(getDate2(i2, i1, i));
+							public void onDateSet(DatePicker datePicker, int year, int month, int date) {
+								button.setText(getDate1(date, month, year));
+//								sum.setText(getDate2(date, month, year));
+								sh1.setDate(date);
+								sh1.setMonth(month);
+								sh1.setYear(year);
+								update(i, sh1, "datepicker 204");
 							}
 						},
 						curYear,
@@ -254,9 +218,9 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		return view;
 	}
 
-	private void setDay(final Button btn, final int i, final int id, final int[] day) {
+	private void setDay(final Button btn, final int i, final int id) {
 		final SheduleClass sh = (SheduleClass) shedules.get(id);
-
+		final int[] day = sh.getDay();
 		if (day[i] == 1) {
 			btn.setTextColor(Color.parseColor("#3A5351"));
 			btn.setBackgroundResource(R.drawable.round_button_selected);
@@ -269,27 +233,18 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (day[i] == 0) {
-//					Toast.makeText(context, "0", Toast.LENGTH_SHORT).show();
-					day[i] = 1;
-					btn.setTextColor(Color.parseColor("#3A5351"));
-					btn.setBackgroundResource(R.drawable.round_button_selected);
-				}
-				else {
-//					Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
-					day[i] = 0;
-					btn.setTextColor(Color.parseColor("#97F2F3F3"));
-					btn.setBackgroundResource(R.drawable.round_button);
-				}
+				day[i] = 1 - day[i];
 
 				sh.setDay(day);
-				sum.setText(getSummary(day));
+				update(id, sh, "btn 237");
 			}
 		});
 	}
 
-	String getDate1(int day, int month, int year) {
+	private String getDate1(int day, int month, int year) {
 		String a = "", b = "";
+
+		month++;
 
 		if (day < 10)		a = "0";
 		if (month < 10)		b = "0";
@@ -297,7 +252,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		return (a + day + "/" + b + month + "/" + year);
 	}
 
-	String getDate2(int day, int month, int year) {
+	private String getDate2(int day, int month, int year) {
 		final String []name;
 		name = new String[12];
 
@@ -322,7 +277,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 	}
 
 
-	String getSummary(int[] day) {
+	private String getSummary(int[] day) {
 		boolean start = true;
 
 		String s = " ";
@@ -358,9 +313,6 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 	}
 
 	private void getTime(final SheduleClass sh) {
-
-		Toast.makeText(context, "getTime", Toast.LENGTH_SHORT).show();
-
 		TimePicker timePicker = new TimePicker(context);
 		final int curHour = timePicker.getCurrentHour();
 		final int curMinute = timePicker.getCurrentMinute();
@@ -379,7 +331,7 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 							i = 12;
 						}
 
-						text1.setText(i + ":" + i1);
+						text1.setText(formatTime(i, i1));
 						if (isAM)
 							text2.setText("am");
 						else
@@ -393,6 +345,25 @@ class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
 		dialog.show();
 	}
 
+	String formatTime(int hour, int minute) {
+		String a = "", b = "";
+
+		if (hour < 10)
+			a = "0";
+
+		if (minute < 10)
+			b = "0";
+
+		String res = a + hour + ":" + b + minute;
+
+		return  res;
+	}
+
+	void update(int i, SheduleClass s, String from) {
+		Toast.makeText(context, "updating " + from + " " + i, Toast.LENGTH_SHORT).show();
+		shedules.set(i, s);
+		adapter.notifyDataSetChanged();
+	}
 	@Override
 	public boolean isChildSelectable(int i, int i1) {
 		return false;

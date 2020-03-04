@@ -1,12 +1,5 @@
 package com.IDP.Group1.acr;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,10 +98,10 @@ public class User implements java.io.Serializable {
 		battery = 0;
 		notification = new ArrayList<String>();
 		shedules = new ArrayList<>();
-		dummyData();
-	}
+//		dummyData();
+//		writeData();
 
-	private void dummyData() {
+
 		name = "wazed rifat";
 		email = "wazedrifat@gmail.com";
 		machineID = "1234";
@@ -119,7 +112,7 @@ public class User implements java.io.Serializable {
 		notification.add("welcome to our ACR service");
 		notification.add("please scan your room");
 		notification.add("you battery is fully charged");
-		notification.add("add a shedule for cleaning you room daily");
+		notification.add("add a schedule for cleaning you room daily");
 
 		int[] a = new int[7];
 
@@ -131,37 +124,53 @@ public class User implements java.io.Serializable {
 		shedules.add(new SheduleClass(3, 30, a, true));
 	}
 
-	public void writeData() {
-		try {
-			FileOutputStream fileOut = new FileOutputStream("/tmp/user.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//	private void dummyData() {
+//		name = "wazed rifat";
+//		email = "wazedrifat@gmail.com";
+//		machineID = "1234";
+//		contactInfo = "01684855907";
+//
+//		battery = 100;
+//
+//		notification.add("welcome to our ACR service");
+//		notification.add("please scan your room");
+//		notification.add("you battery is fully charged");
+//		notification.add("add a schedule for cleaning you room daily");
+//
+//		int[] a = new int[7];
+//
+//		a[0] = a[1] = a[2] = 1;
+//		a[3] = a[4] = a[5] = a[6] = 0;
+//
+//		shedules.add(new SheduleClass(1, 10, 23 ,8, 2019, true));
+//		shedules.add(new SheduleClass(2, 20, 13 ,7, 2018, false));
+//		shedules.add(new SheduleClass(3, 30, a, true));
+//	}
 
-			out.writeObject(this);
-			out.close();
-			fileOut.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public User readData() {
-		User ret = null;
-
-		try {
-			FileInputStream fileIn = new FileInputStream("/tmp/user.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			ret = (User) in.readObject();
-			in.close();
-			fileIn.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return ret;
-	}
+//	public void writeData() {
+//		FirebaseFirestore db = FirebaseFirestore.getInstance();
+//		DocumentReference dr = db.document("user/data");
+//		User object = this;
+//		dr.set(object);
+//	}
+//
+//	public User readData() {
+//		User ret = null;
+//
+//		try {
+//			FileInputStream fileIn = new FileInputStream("/tmp/user.ser");
+//			ObjectInputStream in = new ObjectInputStream(fileIn);
+//			ret = (User) in.readObject();
+//			in.close();
+//			fileIn.close();
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return ret;
+//	}
 }

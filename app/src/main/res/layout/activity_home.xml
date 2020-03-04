@@ -25,5 +25,11 @@
 		android:fitsSystemWindows="true"
 		app:headerLayout="@layout/nav_header_home"
 		app:menu="@menu/activity_home_drawer" />
+<!--	<com.google.android.material.tabs.TabLayout-->
+<!--		app:tabBackground="#202124"-->
+<!--		app:tabGravity="center"-->
+<!--		android:id="@+id/tabs"-->
+<!--		android:layout_width="match_parent"-->
+<!--		android:layout_height="wrap_content"/>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>
