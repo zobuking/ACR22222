@@ -47,105 +47,105 @@ public class Shedule extends Fragment {
 		// Inflate the layout for this fragment
 		final View view = inflater.inflate(R.layout.fragment_shedule, container, false);
 
-		final ExpandableListView expandableListView = view.findViewById(R.id.expandableListViewID);
-
-//		expandableListView.setGroupIndicator(null);
-
-		final List<SheduleClass> sheduleList;
-		sheduleList = new ArrayList<>();
-
-		int[] a = new int[7];
-
-		a[0] = a[1] = a[2] = 1;
-		a[3] = a[4] = a[5] = a[6] = 0;
-
-		sheduleList.add(new SheduleClass(1, 10, 23 ,8, 2019, true));
-		sheduleList.add(new SheduleClass(2, 20, 13 ,7, 2018, false));
-		sheduleList.add(new SheduleClass(3, 30, a, true));
-
-		Toast.makeText(getContext(), "i am here", Toast.LENGTH_SHORT).show();
-		prevExpanded = -1;
-
-		expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-			@Override
-			public void onGroupExpand(int groupPosition) {
-				if (prevExpanded != -1 && prevExpanded != groupPosition) {
-					expandableListView.collapseGroup(prevExpanded);
-					LinearLayout prevLayout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
-					if (prevLayout != null) {
-						prevLayout.setBackgroundColor(Color.parseColor("#202124"));
-					}
-
-					Toast.makeText(getContext(), "prev = " + prevExpanded, Toast.LENGTH_SHORT).show();
-				}
-				LinearLayout curLayout = expandableListView.getChildAt(groupPosition).findViewById(R.id.headerID);
-
-				if (curLayout != null) {
-					curLayout.setBackgroundColor(Color.parseColor("#2A2A30"));
-				}
-				else {
-					Toast.makeText(getContext(), "null = " + groupPosition, Toast.LENGTH_SHORT).show();
-				}
-
-				Toast.makeText(getContext(), "pos = " + groupPosition, Toast.LENGTH_SHORT).show();
-				prevExpanded = groupPosition;
-			}
-		});
-
-		expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-			@Override
-			public void onGroupCollapse(int groupPosition) {
-				LinearLayout layout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
-
-				if (layout != null) {
-					layout.setBackgroundColor(Color.parseColor("#202124"));
-				}
-			}
-		});
-		
-		adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
-		expandableListView.setAdapter(adapter);
-
-		FloatingActionButton fab = view.findViewById(R.id.fabSheduleID);
-
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View view) {
-				DatePicker datePicker = new DatePicker(getContext());
-				final int curDay = datePicker.getDayOfMonth();
-				final int curMonth = datePicker.getMonth() + 1;
-				final int curYear = datePicker.getYear();
-
-				TimePicker timePicker = new TimePicker(getContext());
-				final int curHour = timePicker.getCurrentHour();
-				final int curMinute = timePicker.getCurrentMinute();
-
-				TimePickerDialog dialog = new TimePickerDialog(
-						getContext(),
-						new TimePickerDialog.OnTimeSetListener() {
-							@Override
-							public void onTimeSet(TimePicker timePicker, int i, int i1) {
-								boolean isAM = true;
-								if (i > 12) {
-									isAM = false;
-									i -= 12;
-								}
-								else if (i == 0) {
-									i = 12;
-								}
-
-								sheduleList.add(new SheduleClass(i, i1, curDay ,curMonth, curYear, isAM));
-								adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
-								expandableListView.setAdapter(adapter);
-							}
-						},
-						curHour,
-						curMinute,
-						false
-				);
-				dialog.show();
-			}
-		});
+//		final ExpandableListView expandableListView = view.findViewById(R.id.expandableListViewID);
+//
+////		expandableListView.setGroupIndicator(null);
+//
+//		final List<SheduleClass> sheduleList;
+//		sheduleList = new ArrayList<>();
+//
+//		int[] a = new int[7];
+//
+//		a[0] = a[1] = a[2] = 1;
+//		a[3] = a[4] = a[5] = a[6] = 0;
+//
+//		sheduleList.add(new SheduleClass(1, 10, 23 ,8, 2019, true));
+//		sheduleList.add(new SheduleClass(2, 20, 13 ,7, 2018, false));
+//		sheduleList.add(new SheduleClass(3, 30, a, true));
+//
+//		Toast.makeText(getContext(), "i am here", Toast.LENGTH_SHORT).show();
+//		prevExpanded = -1;
+//
+//		expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//			@Override
+//			public void onGroupExpand(int groupPosition) {
+//				if (prevExpanded != -1 && prevExpanded != groupPosition) {
+//					expandableListView.collapseGroup(prevExpanded);
+//					LinearLayout prevLayout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
+//					if (prevLayout != null) {
+//						prevLayout.setBackgroundColor(Color.parseColor("#202124"));
+//					}
+//
+//					Toast.makeText(getContext(), "prev = " + prevExpanded, Toast.LENGTH_SHORT).show();
+//				}
+//				LinearLayout curLayout = expandableListView.getChildAt(groupPosition).findViewById(R.id.headerID);
+//
+//				if (curLayout != null) {
+//					curLayout.setBackgroundColor(Color.parseColor("#2A2A30"));
+//				}
+//				else {
+//					Toast.makeText(getContext(), "null = " + groupPosition, Toast.LENGTH_SHORT).show();
+//				}
+//
+//				Toast.makeText(getContext(), "pos = " + groupPosition, Toast.LENGTH_SHORT).show();
+//				prevExpanded = groupPosition;
+//			}
+//		});
+//
+//		expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//			@Override
+//			public void onGroupCollapse(int groupPosition) {
+//				LinearLayout layout = expandableListView.getChildAt(prevExpanded).findViewById(R.id.headerID);
+//
+//				if (layout != null) {
+//					layout.setBackgroundColor(Color.parseColor("#202124"));
+//				}
+//			}
+//		});
+//
+//		adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
+//		expandableListView.setAdapter(adapter);
+//
+//		FloatingActionButton fab = view.findViewById(R.id.fabSheduleID);
+//
+//		fab.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(final View view) {
+//				DatePicker datePicker = new DatePicker(getContext());
+//				final int curDay = datePicker.getDayOfMonth();
+//				final int curMonth = datePicker.getMonth() + 1;
+//				final int curYear = datePicker.getYear();
+//
+//				TimePicker timePicker = new TimePicker(getContext());
+//				final int curHour = timePicker.getCurrentHour();
+//				final int curMinute = timePicker.getCurrentMinute();
+//
+//				TimePickerDialog dialog = new TimePickerDialog(
+//						getContext(),
+//						new TimePickerDialog.OnTimeSetListener() {
+//							@Override
+//							public void onTimeSet(TimePicker timePicker, int i, int i1) {
+//								boolean isAM = true;
+//								if (i > 12) {
+//									isAM = false;
+//									i -= 12;
+//								}
+//								else if (i == 0) {
+//									i = 12;
+//								}
+//
+//								sheduleList.add(new SheduleClass(i, i1, curDay ,curMonth, curYear, isAM));
+//								adapter = new CustomExpandableListViewAdapter(view.getContext(), sheduleList);
+//								expandableListView.setAdapter(adapter);
+//							}
+//						},
+//						curHour,
+//						curMinute,
+//						false
+//				);
+//				dialog.show();
+//			}
+//		});
 		return view;
 	}
 }

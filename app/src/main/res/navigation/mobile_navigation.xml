@@ -29,6 +29,12 @@
 		tools:layout="@layout/fragment_floor_mapping" />
 
 	<fragment
+		android:id="@+id/nav_KidMode"
+		android:name="com.IDP.Group1.acr.KidMode"
+		android:label="@string/kid_mode"
+		tools:layout="@layout/fragment_kid_mode" />
+
+	<fragment
 		android:id="@+id/nav_Setting"
 		android:name="com.IDP.Group1.acr.Setting"
 		android:label="@string/setting"

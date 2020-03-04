@@ -47,7 +47,7 @@ public class Home extends actionBar {
 		// menu should be considered as top level destinations.
 		mAppBarConfiguration = new AppBarConfiguration.Builder(
 				R.id.nav_Dashboard, R.id.nav_Clean, R.id.nav_Shedule,
-				R.id.nav_FloorMapping, R.id.nav_Setting)
+				R.id.nav_FloorMapping, R.id.nav_KidMode, R.id.nav_Setting)
 				.setDrawerLayout(drawer)
 				.build();
 		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
