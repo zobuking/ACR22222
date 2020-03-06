@@ -29,9 +29,10 @@ public class Dashboard extends Fragment {
 	private User user;
 
 	boolean isRecording;
-	ImageView alert,sleep,clean,notification,mic,settings, battery;
+	ImageView alert,sleep,notification,mic,settings, battery;
 	TextView batteryText;
 	Switch aSwitch;
+	com.varunest.sparkbutton.SparkButton clean;
 
 	public Dashboard() {
 		// Required empty public constructor
@@ -46,7 +47,8 @@ public class Dashboard extends Fragment {
 		aSwitch = V.findViewById(R.id.switchID);
 		alert =V.findViewById(R.id.alertID);
 		sleep =V.findViewById(R.id.sleepID);
-		clean =V.findViewById(R.id.cleanID);
+	    clean =V.findViewById(R.id.spark_button);
+
 		notification =V.findViewById(R.id.notificationID);
 		mic =V.findViewById(R.id.micID);
 
@@ -54,37 +56,41 @@ public class Dashboard extends Fragment {
 
 		if (user.isPowerOn) {
 			aSwitch.setChecked(true);
+
 		}
 		else {
 			aSwitch.setChecked(false);
+
+
 		}
 
 		aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				user.isPowerOn = isChecked;
+
 			}
 		});
 
 
-		clean.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				FragmentManager fragmentManager = getFragmentManager();
-
-				Clean clean = new Clean();
-				fragmentManager.beginTransaction()
-						.replace(R.id.nav_host_fragment, clean).commit();
-
-//				FirebaseFirestore db = FirebaseFirestore.getInstance();
-//				DocumentReference dr = db.document("user/data");
-//				dr.set(user);
-
-				View view = getActivity().findViewById(R.id.nav_host_fragment);
-				Snackbar.make(view, "Cleaning Right Now. Please Wait", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
+//		clean.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				FragmentManager fragmentManager = getFragmentManager();
+//
+//				Clean clean = new Clean();
+//				fragmentManager.beginTransaction()
+//						.replace(R.id.nav_host_fragment, clean).commit();
+//
+////				FirebaseFirestore db = FirebaseFirestore.getInstance();
+////				DocumentReference dr = db.document("user/data");
+////				dr.set(user);
+//
+//				View view = getActivity().findViewById(R.id.nav_host_fragment);
+//				Snackbar.make(view, "Cleaning Right Now. Please Wait", Snackbar.LENGTH_LONG)
+//						.setAction("Action", null).show();
+//			}
+//		});
 
 		alert.setOnClickListener(new View.OnClickListener() {
 			@Override
